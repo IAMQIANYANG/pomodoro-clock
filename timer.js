@@ -2,20 +2,20 @@
  * Created by pandachain on 2016-08-03.
  */
 
+function timer(defaultSeconds) {
 
-function timer(newRemainingSeconds) {
-
-  let remainingSeconds = newRemainingSeconds;
+  let remainingSeconds = defaultSeconds;
   let interval;
 
   const self = {
-    start: function(callback){
+    start: function(callback1, callback2){
       interval = setInterval(function(){
         if (remainingSeconds > 0){
           --remainingSeconds;
-          callback(remainingSeconds);
+          callback1(remainingSeconds);
         } else {
           self.stop();
+          callback2(remainingSeconds);
         }
       }, 1000)
     },
@@ -31,6 +31,11 @@ function timer(newRemainingSeconds) {
     },
     isTimerRunning: function() {
       return interval;
+    },
+    reset: function() {
+      remainingSeconds = defaultSeconds;
+      self.stop();
+      
     }
   };
 
