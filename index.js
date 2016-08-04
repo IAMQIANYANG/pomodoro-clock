@@ -56,10 +56,12 @@ var startOrPause = function(){
 
 var toggleTimer = function(seconds){
   if(seconds <= 0 && currentSession.textContent === 'Session'){
+    playAlarm();
     currentSession.textContent = 'Break';
     breakTimer.start(showInClock, toggleTimer);
     sessionTimer.setRemainingSeconds(Number(document.querySelector('#session span').textContent) * 60)
   } else if (seconds <= 0 && currentSession.textContent === 'Break'){
+    playAlarm();
     currentSession.textContent = 'Session';
     sessionTimer.start(showInClock, toggleTimer);
     breakTimer.setRemainingSeconds(Number(document.querySelector('#break span').textContent) *60)
@@ -87,6 +89,26 @@ var twoDigits = function(value){
   return ('0' + value).slice(-2)
 };
 
+
+//switch between play and stop icon
+var switchPlayStop = function(){
+  if (sessionTimer.isTimerRunning() || breakTimer.isTimerRunning()){
+    document.querySelector('#play').setAttribute('style','display: none');
+    document.querySelector('#stop').setAttribute('style','display: inline');
+  } else {
+    document.querySelector('#play').setAttribute('style','display: inline');
+    document.querySelector('#stop').setAttribute('style','display: none');
+  }
+};
+
+//audio event
+
+var alarm = new Audio('http://soundbible.com/grab.php?id=1766&type=mp3');
+
+var playAlarm = function(){
+  alarm.play();
+};
+
 // assign button events
 var sessionPlus = document.querySelector('#session .plus');
 sessionPlus.onclick = addOneMinToSessionTimer;
@@ -101,7 +123,10 @@ var breakMinus = document.querySelector('#break .minus');
 breakMinus.onclick = minusOneMinToBreakTimer;
 
 var controlButton = document.querySelector('#control');
-controlButton.onclick = startOrPause;
+controlButton.addEventListener('click', function(){
+  startOrPause();
+  switchPlayStop();
+});
 
 var resetButton = document.querySelector('#reset');
 resetButton.onclick = resetTimer;

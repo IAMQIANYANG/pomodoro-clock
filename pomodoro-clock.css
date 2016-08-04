@@ -1,4 +1,10 @@
+body {
+    background: #34495E;
+    font-family: 'Roboto', sans-serif;
+    color:#ECF0F1;
+}
 h1{
+    margin-top: 60px;
     text-align: center;
 }
 
@@ -6,8 +12,8 @@ h1{
     height:50px;
     width:120px;
     display:inline-block;
-    border: 1px solid pink;
-    margin:20px;
+    margin:10px 100px;
+
 }
 
 .controlWrapper{
@@ -16,23 +22,58 @@ h1{
 
 
 #timer{
-    height:200px;
-    width:200px;
-    border:1px solid pink;
+    height:250px;
+    width:250px;
+    border:3px solid #D2527F;
     border-radius:50%;
-    margin:20px auto;
-}
-.footer{
-    margin-top: 20px;
+    margin:0 auto;
     text-align: center;
+
 }
-#timer{
-    text-align: center;
+
+#timer p:nth-child(1) {
+    margin-top:30%;
+    font-size: 30px;
 }
+
+#timer p:nth-child(2) {
+    font-size: 25px;
+}
+
+
 
 #buttons{
     text-align: center;
 }
-/*#timerBreak{*/
-    /*display: none;*/
-/*}*/
+
+#buttons button{
+    margin-top:0;
+    margin-left:20px;
+    margin-right: 20px;
+}
+
+button {
+    border-style: none;
+    background: #34495E;
+    color:#ECF0F1;
+    font-size:20px;
+    outline:0;
+}
+
+
+.control span{
+    font-size: 25px;
+}
+
+#stop{
+    display:none;
+}
+
+.footer{
+    margin-top: 20px;
+    text-align: center;
+}
+
+#progressBar > svg{
+    margin-top:-300px;
+}

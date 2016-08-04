@@ -8,14 +8,14 @@ function timer(defaultSeconds) {
   let interval;
 
   const self = {
-    start: function(callback1, callback2){
+    start: function(runningCallback, stopCallback){
       interval = setInterval(function(){
         if (remainingSeconds > 0){
           --remainingSeconds;
-          callback1(remainingSeconds);
+          runningCallback(remainingSeconds);
         } else {
           self.stop();
-          callback2(remainingSeconds);
+          stopCallback(remainingSeconds);
         }
       }, 1000)
     },

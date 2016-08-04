@@ -6,7 +6,9 @@
     <meta name="keywords" content="free code camp">
     <meta name="author" content="Qian Yang">
     <title>Pomodoro Clock</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
     <link href="pomodoro-clock.css" rel="stylesheet" type="text/css">
+    <script src="https://use.fontawesome.com/6a67bdc33d.js"></script>
 </head>
 
 <body>
@@ -30,13 +32,16 @@
 </div>
 
 <div id="timer">
-        <p id="currentSession">Session</p>
-        <p>00:25:00</p>
+    <p id="currentSession">Session</p>
+    <p>00:25:00</p>
 </div>
 
+
 <div id="buttons">
-    <button id="control">control</button>
-    <button id="reset">reset</button>
+    <button id="control"><i id="play" class="fa fa-play fa-2x" aria-hidden="true"></i><i id="stop" class="fa fa-pause fa-2x" aria-hidden="true"></i>
+    </button>
+    <button id="reset"><i class="fa fa-refresh fa-2x" aria-hidden="true"></i>
+    </button>
 </div>
 
 
