@@ -103,7 +103,7 @@ var switchPlayStop = function(){
 
 //audio event
 
-var alarm = new Audio('http://soundbible.com/grab.php?id=1766&type=mp3');
+var alarm = new Audio('https://crossorigin.me/http://soundbible.com/grab.php?id=1766&type=mp3');
 
 var playAlarm = function(){
   alarm.play();
@@ -111,16 +111,40 @@ var playAlarm = function(){
 
 // assign button events
 var sessionPlus = document.querySelector('#session .plus');
-sessionPlus.onclick = addOneMinToSessionTimer;
-
 var sessionMinus = document.querySelector('#session .minus');
-sessionMinus.onclick = minusOneMinToSessionTimer;
-
 var breakPlus = document.querySelector('#break .plus');
-breakPlus.onclick = addOneMinToBreakTimer;
-
 var breakMinus = document.querySelector('#break .minus');
-breakMinus.onclick = minusOneMinToBreakTimer;
+
+
+
+var assignPlusMinusButtonEvents = function(){
+  sessionPlus.addEventListener('click', function(){
+    if (!sessionTimer.isTimerRunning() && !breakTimer.isTimerRunning()){
+      addOneMinToSessionTimer();
+    }
+  });
+
+
+  sessionMinus.addEventListener('click', function(){
+    if (!sessionTimer.isTimerRunning() && !breakTimer.isTimerRunning()){
+      minusOneMinToSessionTimer();
+    }
+  });
+
+  breakPlus.addEventListener('click', function(){
+    if (!sessionTimer.isTimerRunning() && !breakTimer.isTimerRunning()){
+      addOneMinToBreakTimer();
+    }
+  });
+
+  breakMinus.addEventListener('click', function(){
+    if (!sessionTimer.isTimerRunning() && !breakTimer.isTimerRunning()){
+      minusOneMinToBreakTimer();
+    }
+  });
+};
+
+
 
 var controlButton = document.querySelector('#control');
 controlButton.addEventListener('click', function(){
@@ -130,3 +154,5 @@ controlButton.addEventListener('click', function(){
 
 var resetButton = document.querySelector('#reset');
 resetButton.onclick = resetTimer;
+
+assignPlusMinusButtonEvents();
